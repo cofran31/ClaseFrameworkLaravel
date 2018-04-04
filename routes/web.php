@@ -34,3 +34,4 @@ Route::get('/alias/{nombrep}/{aliasp?}', function ($nombrep,$aliasp=null) {
     return "El producto {$nombrep}, no tiene el alias ";
     }
 });
+Route::resource('almacen/categoria','CategoriaController');

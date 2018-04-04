@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/La_Paz',
 
     /*
     |--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -154,11 +154,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        SisFramework\Providers\AppServiceProvider::class,
+        SisFramework\Providers\AuthServiceProvider::class,
+        // SisFramework\Providers\BroadcastServiceProvider::class,
+        SisFramework\Providers\EventServiceProvider::class,
+        SisFramework\Providers\RouteServiceProvider::class,
 
     ],
 
