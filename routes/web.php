@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/hola', function () {
@@ -33,10 +33,15 @@ Route::get('/alias/{nombrep}/{aliasp?}', function ($nombrep,$aliasp=null) {
     }else{
     return "El producto {$nombrep}, no tiene el alias ";
     }
-});
+});*/
 Route::resource('almacen/categoria','CategoriaController');
 Route::resource('almacen/articulo','ArticuloController');
 Route::resource('ventas/cliente','ClienteController');
 Route::resource('compras/proveedor','ProveedorController');
 Route::resource('compras/ingreso','IngresoController');
 Route::resource('ventas/venta','VentaController');
+Route::auth();
+Route::get('/', function () {
+    return view('auth/login');
+});
+Route::get('/logout', 'Auth\LoginController@logout');
