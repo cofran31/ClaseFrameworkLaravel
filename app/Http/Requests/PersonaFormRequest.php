@@ -4,15 +4,14 @@ namespace SisFramework\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoriaFormRequest extends FormRequest
-{
+class PersonaFormRequest extends FormRequest {
+
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize()
-    {
+    public function authorize() {
         return true;
     }
 
@@ -21,11 +20,15 @@ class CategoriaFormRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
-    {
+    public function rules() {
         return [
-            'nombre'=>'required|max:50',
-            'descripcion'=>'max:256',
+            'nombre' => 'required|max:100',
+            'tipo_documento' => 'required|max:20',
+            'num_documento' => 'required|max:15',
+            'direccion' => 'max:70',
+            'telefono' => 'max:15',
+            'email' => 'max:50'
         ];
     }
+
 }
