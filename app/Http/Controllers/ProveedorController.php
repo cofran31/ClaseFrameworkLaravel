@@ -1,4 +1,5 @@
 <?php
+
 namespace SisFramework\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -9,6 +10,10 @@ use SisFramework\Http\Requests\PersonaFormRequest;
 use DB;
 
 class ProveedorController extends Controller {
+
+    public function __construct() {
+        $this->middleware('auth');
+    }
 
     public function index(Request $request) {
         $query = trim($request->get('searchText'));
