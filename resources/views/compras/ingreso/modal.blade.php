@@ -6,7 +6,7 @@ role="dialog" tabindex="-1" id="modal-delete-{{$ing->idingreso}}">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" 
 				aria-label="Close">
-                     <span aria-hidden="true">×</span>
+                     <span aria-hidden="true">X</span>
                 </button>
                 <h4 class="modal-title">Cancelar Ingreso</h4>
 			</div>

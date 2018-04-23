@@ -31,7 +31,12 @@ class IngresoController extends Controller {
                     ->groupBy('i.idingreso', 'i.fecha_hora', 'p.nombre', 'i.tipo_comprobante', 'i.serie_comprobante', 'i.num_comprobante', 'i.impuesto', 'i.estado')
                     ->paginate(7);
             return view('compras.ingreso.index', ["ingresos" => $ingresos, "searchText" => $query]);
-        }/* Comentar Aqui logica y descripccion del Query */
+        }
+        /*
+         * Este metodo realiza consulta uniendo 3 tablas de la base de datos 
+         * (ingreso, persona, detalle_ingreso) a travez del JOIN para 
+         * mostrar en la vista COMPRAS->INGRESO->index.blade.php a travez de un grid.
+        */
     }
 
     public function create() {
@@ -43,7 +48,12 @@ class IngresoController extends Controller {
         return view('compras.ingreso.create', ["personas" => $personas, "articulos" => $articulos]);
     }
 
-/* Comentar Aqui logica y descripccion del Query */
+/* Este metodo llama al formulario para crear un nuevo ingreso de proveedores y articulos.
+ * Obtiene a travez de la variable $personas todas las personas existentes que sean PROVEEDORES,
+ * y tambien obtiene a travez de la variable $articulos todos los articulos disponibles que existen.
+ * Estas dos varialbles las envia a la vista COMPRAS->INGRESO->create.blade.php para cargar en los select's 
+ * correspondiente que son parte de la informacion que se necesita registrar las cantidades, precio de compra,
+precio de venta de un articulo de un proveedor determinado */
 
     public function store(Request $request) {
         try {
@@ -54,7 +64,7 @@ class IngresoController extends Controller {
             $ingreso->tipo_comprobante = $request->get('tipo_comprobante');
             $ingreso->serie_comprobante = $request->get('serie_comprobante');
             $ingreso->num_comprobante = $request->get('num_comprobante');
-            $mytime = Carbon::now('America/Mexico_City');
+            $mytime = Carbon::now('America/La_Paz');
             $ingreso->fecha_hora = $mytime->ToDateTimeString();
             $ingreso->impuesto = '16';
             $ingreso->estado = 'A';
@@ -87,7 +97,14 @@ class IngresoController extends Controller {
         return Redirect::to('compras/ingreso');
     }
 
-/* Comentar Aqui logica y descripccion del Query */
+/* Este metodo ejecuta la insercion de datos enviados de COMPRAS->INGRESO->create.blade.php 
+ * se ejecuta  beginTransaction() para el manejo manual de transacciones, 
+ * Puede deshacer la transacción a través del metodo rollBack,
+ * Por último, puede confirmar una transacción a través del metodo commit
+ * lo utiliza a travez de una excepcion.
+ * Realiza la insercion de un registro a la tabla INGRESO y usa un ciclo while para 
+ * realizar la insercion de los registros a la tabla DETALLE_INGRESO todos con el id de INGRESO 
+ * al que pertenecen. */
 
     public function show($id) {
         $ingreso = DB::table('ingreso as i')
@@ -106,14 +123,19 @@ class IngresoController extends Controller {
         return view("compras.ingreso.show", ["ingreso" => $ingreso, "detalles" => $detalles]);
     }
 
-/* Comentar Aqui logica y descripccion del Query */
+/* Este metodo obtiene dos consultas una a traves de la variable $ingreso usa 3 tablas (INGRESO, PERSONA, DETALLE_INGRESO),
+ * unidas a traves del uso del JOIN donde se recibe el id de ingreso que se desea obtener.
+ * otra consulta a traves de la variable $detalles que realisa una consulta a la tabla DETALLE_INGRESO
+ * para obtener todos los articulos, cantidades, precio de compra y venta del id de ingreso recibido 
+ * estas consultas son enviadas a las vista COMPRAS->INGRESO->show.blade.php para ser mostrados.
+ *  */
 
     public function destroy($id) {
         $ingreso = Ingreso::findOrFail($id);
         $ingreso->estado = 'C';
-        $ingreso - update();
+        $ingreso->update();
         return Redirect::to('compras/ingreso');
     }
 
-/* Comentar Aqui logica y descripccion del Query */
+/* Este metodo realiza el cambio de estado de un id de la tabla INGRESO */
 }

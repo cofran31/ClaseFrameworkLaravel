@@ -36,6 +36,7 @@
                         <a href="" data-target="#modal-delete-{{$users->id}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
                     </td>
                 </tr>
+                @include('acceso.usuario.modal')
                 @endforeach
             </table>
         </div>

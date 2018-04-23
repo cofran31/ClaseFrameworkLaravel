@@ -6,12 +6,12 @@ role="dialog" tabindex="-1" id="modal-delete-{{$users->id}}">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" 
 				aria-label="Close">
-                     <span aria-hidden="true">×</span>
+                     <span aria-hidden="true">X</span>
                 </button>
-                <h4 class="modal-title">Eliminar Categoría</h4>
+                <h4 class="modal-title">Eliminar Usuario</h4>
 			</div>
 			<div class="modal-body">
-				<p>Confirme si desea Eliminar la categoría</p>
+				<p>Confirme si desea Eliminar este Usuario</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -20,3 +20,5 @@ role="dialog" tabindex="-1" id="modal-delete-{{$users->id}}">
 		</div>
 	</div>
 	{{Form::Close()}}
+
+</div>

@@ -15,8 +15,11 @@ class AcercaController extends Controller {
     }
 
     public function index(Request $request) {
-
-        return view('acerca.index');
+        $titulo = "MaeDWEB | Maestría en Desarrollo Web";
+        $curso = "Framework";
+        $docente = "Aaron Díaz";
+        $alumno = "Juan Carlos Ortube Lahor";
+        return view('acerca.index', ["titulo" => $titulo, "curso" => $curso, "docente" => $docente, "alumno" => $alumno]);
     }
 
 

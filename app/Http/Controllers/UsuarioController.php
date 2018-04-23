@@ -32,7 +32,8 @@ class UsuarioController extends Controller {
     }
 
     public function store(Request $request) {
-        User::create([
+        /// use esta forma de insertar para ver su funcionalidad
+        User::create([ 
                     'name' => $request->get('name'),
                     'email' => $request->get('email'),
                     'password' => Hash::make($request->get('password')),

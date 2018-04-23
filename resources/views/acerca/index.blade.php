@@ -1,21 +1,39 @@
 @extends ('layouts.admin')
 @section ('contenido')
-<table border="0" style="width:100%">
-    <tr><td style="width:20%">
-            <h2>Acerca de:</h2>
-        </td><td style="width:80%"> 
-            <h3>MaeDWEB | Maestría en Desarrollo Web</h3>
+
+@if(count($errors)>0)
+<div class="alert alert-danger">
+    <ul>
+        @foreach($error->all() as $error)
+        <li>{{$error}}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+<table border="0" style="width:70%;" align="center">
+    <tr><td colspan="2" style="text-align: center">
+           <img src="{{URL::asset('img/andina.png')}}" alt="{{'Universidad Andina'}}"  class=""/> 
+    </td></tr>
+    <tr><td style="width:25%">
+            <h2 style="color:darkred"><b>Acerca de:</b></h2>
+        </td><td style="width:75%"> 
+            <h3>{{$titulo}}</h3>
         </td></tr>
         <tr><td>
-            <h2> Docente:</h2>
+            <h2 style="color:darkred"><b> Curso:</b></h2>
         </td><td> 
-            <h3> Aaron Díaz</h3>
+            <h3> {{$curso}}</h3>
         </td></tr>
-    
     <tr><td>
-            <h2> Maestrante:</h2>
+            <h2 style="color:darkred"><b> Docente:</b></h2>
         </td><td> 
-            <h3> Juan Carlos Ortube Lahor</h3>
+            <h3> {{$docente}}</h3>
+        </td></tr>
+
+    <tr><td>
+            <h2 style="color:darkred"><b> Maestrante:</b></h2>
+        </td><td> 
+            <h3> {{$alumno}}</h3>
         </td></tr>
 </table>
 

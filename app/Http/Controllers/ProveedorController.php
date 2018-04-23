@@ -67,6 +67,7 @@ class ProveedorController extends Controller {
     public function destroy($id) {
         $persona = Persona::findOrFail($id);
         $persona->tipo_persona = 'Inactivo';
+        $persona->update();
         return Redirect::to('compras/proveedor');
     }
 
